@@ -5,12 +5,15 @@ import pandas
 from email.mime.base import MIMEBase
 from email import encoders
 import os
+from dotenv import load_dotenv
+load_dotenv()
 
 # URL you want to access
 search=input('Enter a product name to search :')
 mail=input("enter mail id : ")
 min=int(input('enter min price range to filter:'))
 max=int(input('enter max price range to filter:'))
+
 url = f"https://www.flipkart.com/search?q={search}&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=off&as=off"
 ab={'price':[],'product name':[]}
 # Custom headers to mimic a browser request
@@ -19,8 +22,11 @@ headers = {
     "Accept-Language": "en-US,en;q=0.9",
     "Accept-Encoding": "gzip, deflate, br",
     "Connection": "keep-alive",
-    "Upgrade-Insecure-Requests": "1"
+    "Upgrade-Insecure-Requests": "1",
+    "DNT": "1"
 }
+
+#headers = { "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36", "Accept-Language": "en-US,en;q=0.5", "Accept-Encoding": "gzip, deflate, br", "Referer": "https://www.flipkart.com/", "DNT": "1","Connection": "keep-alive" }
 
 
 # Set a timeout (e.g., 10 seconds)
@@ -56,9 +62,9 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
 # Sender and receiver email addresses
-sender_email = "rajansiva313@gmail.com"
+sender_email = os.getenv('SENDER_EMAIL')
 receiver_email = mail
-password = "izuyczcnwhrakcos"  # Use app password if 2FA is enabled
+password = os.getenv('SENDER_EMAIL_PASSWORD')  # Use app password if 2FA is enabled
 
 # SMTP server details for Gmail
 smtp_server = "smtp.gmail.com"
@@ -66,7 +72,7 @@ smtp_port = 587  # Use 465 for SSL, 587 for TLS
 
 # Create the message
 message = MIMEMultipart()
-message['From'] = 'rajansiva313@gmail.com'
+message['From'] =os.getenv('SENDER_EMAIL')
 message['To'] = mail
 message['Subject'] = "Search product filter result in excel"
 try:
