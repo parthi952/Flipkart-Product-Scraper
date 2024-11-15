@@ -29,5 +29,5 @@ Search: The user provides a search query, which the script formats for the Flipk
 Scrape: The script retrieves the HTML page and parses it to extract product information.
 
 
-Save: Data is saved into a CSV file for easy access and analysis.
+Save: Data is saved into a Excel file for easy access and analysis.
 
