@@ -9,7 +9,7 @@ Project Features
 Web Scraping: Uses BeautifulSoup to extract product details from Flipkart’s search results page.
 
 
-Data Storage: Stores the scraped data (product name, price, and rating) in a CSV file using Pandas.
+Data Storage: Stores the scraped data (product name and price) in a Excel file using Pandas and send it to user email.
 
 
 Dynamic Search: Enter any search term, and the script will fetch relevant product listings.
