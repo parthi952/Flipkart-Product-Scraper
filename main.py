@@ -8,11 +8,11 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
-search=input('Enter a product name to search :')
-while search!='quit':
-    mail=input("enter mail id : ")
-    min=int(input('enter min price range to filter:'))
-    max=int(input('enter max price range to filter:'))
+search=input("Enter a product name to search :".title())
+while search.lower()!='quit':
+    mail=input("Enter mail id to send filtered product :".title())
+    min=int(input('Enter minimun price range of the product to filter :'.title()))
+    max=int(input('Enter maximum price range of the product to filter :'.title()))
 
     url = f"https://www.flipkart.com/search?q={search}&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=off&as=off"
     filtered_product_dict={'price':[],'product name':[]}
@@ -55,5 +55,5 @@ while search!='quit':
             print('Convert To Excel Was Failed')
     
 
-    search=input('Enter a product name to search :')
+    search=input("Enter a product name to search or type 'quit' to exit :".title())
 
