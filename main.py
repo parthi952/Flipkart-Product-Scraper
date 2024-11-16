@@ -41,6 +41,8 @@ while search.lower()!='quit':
                     filtered_product_dict['product name'].append(product[i].get_text())
         else:
             print(f"Failed to access {url}. Status code: {response.status_code}")
+    except requests.exceptions.ConnectionError as e:
+        print('Please Turn On Your Network...')
     except Exception as e:
         print(e)
 
